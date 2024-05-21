@@ -1,7 +1,17 @@
 import { DataTypes, Sequelize } from 'sequelize';
+import { sequelize } from '../database'
+
+interface User {
+    id: number
+    username: string;
+    email: string;
+    password_hash: string;
+    created_at: Date
+    updated_at: Date
+}
 
 export function createUserModel(sequelize: Sequelize) {
-    return sequelize.define('User', {
+    return sequelize.define<any, User>('User', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,
@@ -31,3 +41,5 @@ export function createUserModel(sequelize: Sequelize) {
         },
     });
 }
+
+export const User = createUserModel(sequelize);
