@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize';
 import 'dotenv/config'
 
-const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 
 export const sequelize = new Sequelize({
   dialect: 'postgres',
