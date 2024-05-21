@@ -1,16 +1,16 @@
 import express, { Application } from 'express';
 import bodyParser from 'body-parser';
 import { sequelize } from './database';
-import { createUserModel } from './models/userModel'
+import userRoutes from './routes/userRoutes'
 import 'dotenv/config'
 
 const app: Application = express();
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT 
 
 // Middleware
 app.use(bodyParser.json());
 
-const User = createUserModel(sequelize);
+app.use('/api/users', userRoutes);
 
 // Sincronizar modelos com o banco de dados
 sequelize.sync().then(() => {
