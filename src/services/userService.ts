@@ -33,9 +33,8 @@ export const loginUser = async ({ email, password }: LoginUserParams) => {
     if (!user || !await bcrypt.compare(password, user.password_hash)) {
         throw new Error('Credenciais inválidas');
     }
-    
 
-    const token = generateToken({ id: user.id, email: user.email });
+    const token = generateToken({ id: user.id, email: user.email, username: user.username });
 
     return token;
 };
