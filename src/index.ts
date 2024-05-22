@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import { sequelize } from './database';
 import userRoutes from './routes/userRoutes'
 import 'dotenv/config'
@@ -9,6 +10,7 @@ const PORT = process.env.PORT
 
 // Middleware
 app.use(bodyParser.json());
+app.use(cors())
 
 app.use('/api/users', userRoutes);
 
